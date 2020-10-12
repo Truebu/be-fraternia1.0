@@ -21,7 +21,11 @@ class UserController extends Controller
         }else{*/
         $usuario =User::all();
         //}
-        return $usuario;
+        $user = auth()->user();
+        return response()->json([
+            'UsiarioActual'=> $user['id'],
+            'Usuarios'=>$usuario
+        ], 200);
     }
 
     //POST insert
@@ -114,4 +118,10 @@ class UserController extends Controller
             'message'=>'Cerro sesión correctamente.'
         ], 200);
     }
+
+    function findId($id){
+        $user = User::where('id','like','%' . $id . '%')->first();
+        return $user['usuarioNombre'];
+    }
+
 }

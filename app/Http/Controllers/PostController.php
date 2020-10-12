@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PostModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -10,15 +11,29 @@ class PostController extends Controller
 {
     public function index()
     {
-        return PostModel::all();
+        include("UserController.php");
+        $results=PostModel::all();
+        $filas=count($results);
+        for ($i = 0; $i < $filas; $i++){
+            $posts[$i]['publicacionTitulo']=$results[$i]['publicacionTitulo'];
+            $posts[$i]['publicacionDescripcion']=$results[$i]['publicacionDescripcion'];
+            $posts[$i]['usuarioNombre']->findId($results[$i]['fk_usuarioId']);
+            $posts[$i]['publicacionFechaCreacion']=$results[$i]['publicacionFechaCreacion'];
+        }
+        return $posts;
     }
 
     public function store(Request $request)
     {
         $input= $request->all();
         $hoy = date('Y-m-d');
-        $input['publicacionFechaCreacion']=$hoy;
-        PostModel::create($input);
+        $post['publicacionFechaCreacion']=$hoy;
+        $user = auth()->user();
+        $post['publicacionTitulo']=$input['publicacionTitulo'];
+        $post['publicacionDescripcion']=$input['publicacionDescripcion'];
+        $post['cboCollege']=$input['cboCollege'];
+        $post['fk_usuarioId']=$user['id'];
+        PostModel::create($post);
         return response()->json([
             'res' =>true,
             'message'=>'Publicación creada correctamente.'
@@ -39,4 +54,6 @@ class PostController extends Controller
     {
         //
     }
+
+
 }
