@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PostModel;
 use App\Models\User;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -11,16 +12,18 @@ class PostController extends Controller
 {
     public function index()
     {
-        include("UserController.php");
+        $UserController = new UserController();
         $results=PostModel::all();
         $filas=count($results);
         for ($i = 0; $i < $filas; $i++){
             $posts[$i]['publicacionTitulo']=$results[$i]['publicacionTitulo'];
             $posts[$i]['publicacionDescripcion']=$results[$i]['publicacionDescripcion'];
-            $posts[$i]['usuarioNombre']->findId($results[$i]['fk_usuarioId']);
+            $posts[$i]['usuarioNombre']=$UserController->findId($results[$i]['fk_usuarioId']);
             $posts[$i]['publicacionFechaCreacion']=$results[$i]['publicacionFechaCreacion'];
         }
-        return $posts;
+        return response()->json([
+            'Posts'=>$posts
+        ], 200);
     }
 
     public function store(Request $request)
@@ -54,6 +57,4 @@ class PostController extends Controller
     {
         //
     }
-
-
 }

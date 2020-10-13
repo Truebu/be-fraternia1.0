@@ -19,13 +19,13 @@ class CompanyController extends Controller
         ], 200);
     }
 
-    public function findCompanyName(Request $request){
-        $college = CompanyModel::where('id','like','%' . $request . '%')->first();
-        return $college['empresaNombre'];
+    public function findCompanyName($request){
+        $company = CompanyModel::where('id','like','%' . $request . '%')->first();
+        return $company['empresaNombre'];
     }
 
-    public function findCompanyId(Request $request){
-        $college = CompanyModel::where('id_user','like','%' . $request . '%')->first();
-        return $college['id'];
+    public function findCompanyId($request){
+        $company = CompanyModel::where('id_user','like','%' . $request . '%')->first();
+        return $company['id'];
     }
 }

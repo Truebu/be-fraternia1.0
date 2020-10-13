@@ -20,6 +20,7 @@ class VacantSeed extends Seeder
                 'vacanteDescripcion'=>'Se busca',
                 'id_empresa' => 1,
                 'id_users'=> 1,
+                'cboCollege'=>1,
                 'fechasRegistro' => '2020-10-02'
             ],
         ]);

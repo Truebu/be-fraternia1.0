@@ -19,7 +19,7 @@ class Company extends Migration
             $table->string('empresaTelefono', 250);
             $table->string('empresaEmail', 250);
             $table->string('nitEmpresa', 250)->unique();
-            $table->string('esmpresaDescripcion', 250);
+            $table->string('empresaDescripcion', 250);
             $table->integer('id_sector');
             $table->integer('id_user')->unique();
             $table->timestamps();

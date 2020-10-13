@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class VacantModel extends Model
 {
     use HasFactory;
-    protected $table='publicacion';
+    protected $table='vacante';
 
     protected $fillable = [
         'vacanteNombre',
         'vacanteDescripcion',
         'fechasRegistro',
         'id_empresa',
-        'id_users'
+        'id_users',
+        'cboCollege'
     ];
 
     protected $hidden=[

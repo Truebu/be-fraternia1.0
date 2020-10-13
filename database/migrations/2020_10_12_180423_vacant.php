@@ -18,6 +18,7 @@ class Vacant extends Migration
             $table->string('vacanteNombre', 250);
             $table->string('vacanteDescripcion', 250);
             $table->date('fechasRegistro');
+            $table->integer('cboCollege');
             $table->integer('id_empresa');
             $table->integer('id_users');
             $table->timestamps();

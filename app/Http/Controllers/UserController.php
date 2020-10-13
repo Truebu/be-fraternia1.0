@@ -21,9 +21,7 @@ class UserController extends Controller
         }else{*/
         $usuario =User::all();
         //}
-        $user = auth()->user();
         return response()->json([
-            'UsiarioActual'=> $user['id'],
             'Usuarios'=>$usuario
         ], 200);
     }

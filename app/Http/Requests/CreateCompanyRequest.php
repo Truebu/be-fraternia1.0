@@ -24,8 +24,9 @@ class CreateCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'usuarioNombre' =>'required|min:5|max:200',
-            'usuarioEmail' =>'required|unique:empresa,empresaEmail',
+            'nitEmpresa' =>'required|min:5|max:200',
+            'empresaEmail' =>'required|unique:empresa,empresaEmail',
+
         ];
     }
 }

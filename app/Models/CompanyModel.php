@@ -15,7 +15,7 @@ class CompanyModel extends Model
         'empresaTelefono',
         'empresaEmail',
         'nitEmpresa',
-        'esmpresaDescripcion',
+        'empresaDescripcion',
         'id_sector',
         'id_user'
     ];

@@ -20,9 +20,9 @@ class CompanySeed extends Seeder
                 'empresaEmail'=>'empresa@academia.umb.edu.co',
                 'empresaTelefono' => '3132296236',
                 'nitEmpresa'=> '1234567890',
-                'esmpresaDescripcion'=>'Esmpresa de tecnología',
+                'empresaDescripcion'=>'Esmpresa de tecnología',
                 'id_sector' => 1,
-                'id_user' =>1
+                'id_user' => 1
             ],
         ]);
     }
