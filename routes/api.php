@@ -24,4 +24,5 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/vacant/tovacant',[VacantController::class,'store']);
     Route::get('/vacant/list',[VacantController::class,'index']);
     Route::post('/company/signup',[CompanyController::class,'store']);
+    Route::get('/company/exist',[CompanyController::class,'isExistCompany']);
 });

@@ -13,16 +13,8 @@
     <list default="true" id="bc11ce6c-b738-4580-b7bf-030a2e306dc3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VacantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VacantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/CreateCompanyRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CreateCompanyRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/CompanyModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/CompanyModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/VacantModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/VacantModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_180415_company.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_12_180415_company.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_12_180423_vacant.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_12_180423_vacant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/CompanySeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/CompanySeed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/VacantSeed.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/VacantSeed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -181,7 +173,9 @@
       <workItem from="1602455144441" duration="4328000" />
       <workItem from="1602520580946" duration="16865000" />
       <workItem from="1602560608007" duration="787000" />
-      <workItem from="1602608833459" duration="11333000" />
+      <workItem from="1602608833459" duration="13190000" />
+      <workItem from="1602705404341" duration="617000" />
+      <workItem from="1602779730605" duration="12024000" />
     </task>
     <servers />
   </component>

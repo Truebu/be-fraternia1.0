@@ -28,4 +28,18 @@ class CompanyController extends Controller
         $company = CompanyModel::where('id_user','like','%' . $request . '%')->first();
         return $company['id'];
     }
+
+    public function isExistCompany(){
+        $user = auth()->user();
+        $findUser['id_user']=$user['id'];
+        $company = CompanyModel::where('id_user','like','%' . $findUser['id_user'] . '%')->first();
+        if($company==null){
+            $res=false;
+        }else{
+            $res=true;
+        }
+        return response()->json([
+            'res' =>$res
+        ], 200);
+    }
 }

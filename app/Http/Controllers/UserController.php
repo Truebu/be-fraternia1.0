@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Cassandra\Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -63,7 +64,7 @@ class UserController extends Controller
         return $user;
     }
 
-    public function recovery(Request $request)
+    public function recovery(UpdateUserRequest $request, User $User)
     {
         $input= $request->all();
         $user = User::where('usuarioEmail','like','%' . $input['usuarioEmail'] . '%')->get();
@@ -73,30 +74,36 @@ class UserController extends Controller
                 'message'=>'Correo inexistente'
             ], 200);
         }
+        $random=rand(0,10000);
+        $hash=Hash::make($random);
+        $user['usuarioContraseña']=password_hash(substr($hash,0, 9), PASSWORD_BCRYPT);
+        $User->update($user);
         try {
-            $this->update($user);
+
+            return response()->json([
+                'res' =>false,
+                'pass' =>$user['usuarioContraseña'],
+                'message'=>'Resgistro actualizado correctamente.'
+            ], 200);
         }catch (\Exception $e){
             return response()->json([
+                'Exeption'=>$e->getMessage(),
                 'res' =>false,
                 'message'=>'Resgistro actualizado erroneamente.'
             ], 200);
         }
     }
 
-    //PUT actualizar registros
     public function update(UpdateUserRequest $request, User $user)
     {
         $input= $request->all();
-        try {
-            $user->update($input);
-        }catch (\Exception $e){
-            return $e->getMessage();
-        }
+        $user->update($input);
         return response()->json([
             'res' =>true,
             'message'=>'Resgistro actualizado correctamente.'
         ], 200);
     }
+
 
     public function destroy($id)
     {
