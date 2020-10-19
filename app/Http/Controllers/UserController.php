@@ -86,8 +86,7 @@ class UserController extends Controller
             $infoUser['Password']=$pass;
             Mail::to($user['usuarioEmail'])->queue(new MessageReceived($infoUser));
             return response()->json([
-                'res' =>false,
-                'pass' =>$pass,
+                'res' =>true,
                 'message'=>'Resgistro actualizado correctamente.'
             ], 200);
         }catch (\Exception $e){
