@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Mail\MessageReceived;
 use App\Models\User;
 use Cassandra\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -64,11 +66,11 @@ class UserController extends Controller
         return $user;
     }
 
-    public function recovery(UpdateUserRequest $request, User $User)
+    public function recovery(Request $request)
     {
         $input= $request->all();
-        $user = User::where('usuarioEmail','like','%' . $input['usuarioEmail'] . '%')->get();
-        if(count($user)==0){
+        $user = User::where('usuarioEmail','like','%' . $input['usuarioEmail'] . '%')->first();
+        if(is_null($user)){
             return response()->json([
                 'res' =>false,
                 'message'=>'Correo inexistente'
@@ -76,13 +78,16 @@ class UserController extends Controller
         }
         $random=rand(0,10000);
         $hash=Hash::make($random);
-        $user['usuarioContraseña']=password_hash(substr($hash,0, 9), PASSWORD_BCRYPT);
-        $User->update($user);
+        $pass=substr($hash,0, 9);
+        $user->usuarioContraseña=password_hash($pass, PASSWORD_BCRYPT);
         try {
-
+            $user->save();
+            $infoUser['Name']=$user['usuarioNombre'];
+            $infoUser['Password']=$pass;
+            Mail::to($user['usuarioEmail'])->queue(new MessageReceived($infoUser));
             return response()->json([
                 'res' =>false,
-                'pass' =>$user['usuarioContraseña'],
+                'pass' =>$pass,
                 'message'=>'Resgistro actualizado correctamente.'
             ], 200);
         }catch (\Exception $e){
@@ -93,17 +98,6 @@ class UserController extends Controller
             ], 200);
         }
     }
-
-    public function update(UpdateUserRequest $request, User $user)
-    {
-        $input= $request->all();
-        $user->update($input);
-        return response()->json([
-            'res' =>true,
-            'message'=>'Resgistro actualizado correctamente.'
-        ], 200);
-    }
-
 
     public function destroy($id)
     {

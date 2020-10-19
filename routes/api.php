@@ -13,7 +13,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/user/login',[UserController::class,'login']);
 Route::post('/user/signup',[UserController::class,'signup']);
-Route::put('/user/recovery/{id}',[UserController::class,'update']);
 Route::post('/user/recovery',[UserController::class,'recovery']);
 
 Route::group(['middleware' => 'auth:api'], function(){

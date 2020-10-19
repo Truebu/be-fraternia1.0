@@ -15,6 +15,7 @@ class PostController extends Controller
         $UserController = new UserController();
         $results=PostModel::all();
         $filas=count($results);
+        $posts=null;
         for ($i = 0; $i < $filas; $i++){
             $posts[$i]['publicacionTitulo']=$results[$i]['publicacionTitulo'];
             $posts[$i]['publicacionDescripcion']=$results[$i]['publicacionDescripcion'];

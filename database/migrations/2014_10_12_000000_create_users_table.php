@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('usuarioNombre', 200);
             $table->string('usuarioEmail', 200)->unique();
             $table->string('usuarioTelefonoPrincipal');
-            $table->string('usuarioContraseña', 250);
+            $table->string('usuarioContraseña', 250)->nullable();
             $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->foreignId('fk_universidadId');

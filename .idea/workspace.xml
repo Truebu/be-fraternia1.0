@@ -11,10 +11,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bc11ce6c-b738-4580-b7bf-030a2e306dc3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/message-received.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/be-fraterniapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/be-fraterniapp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PostController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/VacantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/VacantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +147,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
       <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/s-ichikawa/laravel-sendgrid-driver" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ierexN6aKKFOWrWm5pnVp6SY0H" />
@@ -175,7 +184,11 @@
       <workItem from="1602560608007" duration="787000" />
       <workItem from="1602608833459" duration="13190000" />
       <workItem from="1602705404341" duration="617000" />
-      <workItem from="1602779730605" duration="12024000" />
+      <workItem from="1602779730605" duration="18321000" />
+      <workItem from="1602863336434" duration="4153000" />
+      <workItem from="1603056006313" duration="4336000" />
+      <workItem from="1603073012245" duration="8856000" />
+      <workItem from="1603124214119" duration="1636000" />
     </task>
     <servers />
   </component>

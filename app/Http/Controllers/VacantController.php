@@ -15,6 +15,7 @@ class VacantController extends Controller
         $UserController = new UserController();
         $results=VacantModel::all();
         $filas=count($results);
+        $vacants=null;
         for ($i = 0; $i < $filas; $i++){
             $vacants[$i]['vacanteNombre']=$results[$i]['vacanteNombre'];
             $vacants[$i]['vacanteDescripcion']=$results[$i]['vacanteDescripcion'];
