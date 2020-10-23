@@ -6,7 +6,7 @@
     <title>Cambio de contraseña</title>
 </head>
 <body>
-<h2>Hola {{$msg['Name']}}</h2>
+<h2>¡Hola, {{$msg['Name']}}!</h2>
 <p style="color: rgb(87, 85, 85);">Su nueva contraseña es : <b style="color: black;">{{$msg['Password']}}</b></p>
 </body>
 </html>

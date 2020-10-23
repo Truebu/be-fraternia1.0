@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/user', [UserController::class,'index']);
     Route::post('/user/logout',[UserController::class,'logout']);
     Route::get('/post/list', [PostController::class,'index']);
+    Route::post('/post/filter', [PostController::class,'filter']);
     Route::post('/post/topost',[PostController::class,'store']);
     Route::post('/vacant/tovacant',[VacantController::class,'store']);
     Route::get('/vacant/list',[VacantController::class,'index']);

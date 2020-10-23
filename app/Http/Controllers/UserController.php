@@ -17,13 +17,7 @@ class UserController extends Controller
     //Get listar registro
     public function index(Request $request)
     {
-        /*if($request->has('txtbuscar')){
-            $usuario = User::where('usuarioNombre','like','%' . $request->txtbuscar . '%')
-                ->orWhere('usuarioTelefonoPrincipal', $request->txtbuscar)
-                ->get();
-        }else{*/
         $usuario =User::all();
-        //}
         return response()->json([
             'Usuarios'=>$usuario
         ], 200);
@@ -33,6 +27,13 @@ class UserController extends Controller
     public function signup(CreateUserRequest $request)
     {
         $input= $request->all();
+        $user = User::where('usuarioEmail','like','%' . $input['usuarioEmail'] . '%')->first();
+        if (!is_null($user)){
+            return response()->json([
+                'res' =>false,
+                'message'=>'Correo ya en uso'
+            ], 200);
+        }
         $password = $input['usuarioContraseña'];
         $input['usuarioContraseña'] = password_hash($password, PASSWORD_BCRYPT);
         User::create($input);

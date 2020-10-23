@@ -10,6 +10,13 @@ class CompanyController extends Controller
 {
     public function store(CreateCompanyRequest $request){
         $input= $request->all();
+        $company = CompanyModel::where('empresaEmail','like','%' . $input['empresaEmail'] . '%')->first();
+        if (!is_null($company)){
+            return response()->json([
+                'res' =>false,
+                'message'=>'Correo ya en uso'
+            ], 200);
+        }
         $user = auth()->user();
         $input['id_user']=$user['id'];
         CompanyModel::create($input);

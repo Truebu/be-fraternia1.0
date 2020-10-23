@@ -25,8 +25,6 @@ class CreateCompanyRequest extends FormRequest
     {
         return [
             'nitEmpresa' =>'required|min:5|max:200',
-            'empresaEmail' =>'required|unique:empresa,empresaEmail',
-
         ];
     }
 }

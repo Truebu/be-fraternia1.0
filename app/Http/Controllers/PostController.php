@@ -13,7 +13,28 @@ class PostController extends Controller
     public function index()
     {
         $UserController = new UserController();
-        $results=PostModel::all();
+        $results=PostModel::orderBy('publicacionFechaCreacion','DESC')->get();
+        $filas=count($results);
+        $posts=null;
+        for ($i = 0; $i < $filas; $i++){
+            $posts[$i]['publicacionTitulo']=$results[$i]['publicacionTitulo'];
+            $posts[$i]['publicacionDescripcion']=$results[$i]['publicacionDescripcion'];
+            $posts[$i]['usuarioNombre']=$UserController->findId($results[$i]['fk_usuarioId']);
+            $posts[$i]['publicacionFechaCreacion']=$results[$i]['publicacionFechaCreacion'];
+        }
+        return response()->json([
+            'Posts'=>$posts
+        ], 200);
+    }
+
+    public function filter(Request $request)
+    {
+        $UserController = new UserController();
+        $results = PostModel::orderBy('publicacionFechaCreacion','DESC')
+            ->where('publicacionTitulo','like','%' . $request['words'] . '%')
+            ->orWhere('publicacionDescripcion','like','%' . $request['words'] . '%')
+            ->orWhere('cboCollege','like','%' . $request['cboCollege'] . '%')
+            ->orWhere('publicacionFechaCreacion','like','%' . $request['publicacionFechaCreacion'] . '%')->get();
         $filas=count($results);
         $posts=null;
         for ($i = 0; $i < $filas; $i++){

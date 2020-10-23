@@ -23,9 +23,15 @@ class CreateUserRequest extends FormRequest
      */
     public function rules()
     {
+        $this->messages();
         return [
-            'usuarioNombre' =>'required|min:5|max:200',
-            'usuarioEmail' =>'required|unique:users,usuarioEmail',
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'usuarioEmail.required.unique:users,usuarioEmail' => 'A message is required',
         ];
     }
 }

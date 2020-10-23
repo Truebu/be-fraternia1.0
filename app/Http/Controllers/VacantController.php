@@ -13,7 +13,7 @@ class VacantController extends Controller
     {
         $CompanyController= new CompanyController();
         $UserController = new UserController();
-        $results=VacantModel::all();
+        $results=VacantModel::orderBy('fechasRegistro','DESC')->get();
         $filas=count($results);
         $vacants=null;
         for ($i = 0; $i < $filas; $i++){
@@ -25,6 +25,29 @@ class VacantController extends Controller
         }
         return response()->json([
             'Vacants'=>$vacants
+        ], 200);
+    }
+
+    public function filter(Request $request)
+    {
+        $UserController = new UserController();
+        $CompanyController= new CompanyController();
+        $results = VacantModel::orderBy('fechasRegistro','DESC')
+            ->where('vacanteNombre','like','%' . $request['words'] . '%')
+            ->orWhere('vacanteDescripcion','like','%' . $request['words'] . '%')
+            ->orWhere('cboCollege','like','%' . $request['cboCollege'] . '%')
+            ->orWhere('fechasRegistro','like','%' . $request['fechasRegistro'] . '%')->get();
+        $filas=count($results);
+        $vacants=null;
+        for ($i = 0; $i < $filas; $i++){
+            $vacants[$i]['vacanteNombre']=$results[$i]['vacanteNombre'];
+            $vacants[$i]['vacanteDescripcion']=$results[$i]['vacanteDescripcion'];
+            $vacants[$i]['nombreEmpresa']=$CompanyController->findCompanyName($results[$i]['id_empresa']);
+            $vacants[$i]['nombreUser']=$UserController->findId($results[$i]['id_users']);
+            $vacants[$i]['fechasRegistro']=$results[$i]['fechasRegistro'];
+        }
+        return response()->json([
+            'Posts'=>$vacants
         ], 200);
     }
 
