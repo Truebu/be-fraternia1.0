@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use phpDocumentor\Reflection\Types\Array_;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
         $UserController = new UserController();
         $results=PostModel::orderBy('publicacionFechaCreacion','DESC')->get();
         $filas=count($results);
-        $posts=null;
+        $posts=[];
         for ($i = 0; $i < $filas; $i++){
             $posts[$i]['publicacionTitulo']=$results[$i]['publicacionTitulo'];
             $posts[$i]['publicacionDescripcion']=$results[$i]['publicacionDescripcion'];
@@ -36,7 +37,7 @@ class PostController extends Controller
             ->orWhere('cboCollege','like','%' . $request['cboCollege'] . '%')
             ->orWhere('publicacionFechaCreacion','like','%' . $request['publicacionFechaCreacion'] . '%')->get();
         $filas=count($results);
-        $posts=null;
+        $posts=[];
         for ($i = 0; $i < $filas; $i++){
             $posts[$i]['publicacionTitulo']=$results[$i]['publicacionTitulo'];
             $posts[$i]['publicacionDescripcion']=$results[$i]['publicacionDescripcion'];

@@ -15,7 +15,7 @@ class VacantController extends Controller
         $UserController = new UserController();
         $results=VacantModel::orderBy('fechasRegistro','DESC')->get();
         $filas=count($results);
-        $vacants=null;
+        $vacants=[];
         for ($i = 0; $i < $filas; $i++){
             $vacants[$i]['vacanteNombre']=$results[$i]['vacanteNombre'];
             $vacants[$i]['vacanteDescripcion']=$results[$i]['vacanteDescripcion'];
@@ -38,7 +38,7 @@ class VacantController extends Controller
             ->orWhere('cboCollege','like','%' . $request['cboCollege'] . '%')
             ->orWhere('fechasRegistro','like','%' . $request['fechasRegistro'] . '%')->get();
         $filas=count($results);
-        $vacants=null;
+        $vacants=[];
         for ($i = 0; $i < $filas; $i++){
             $vacants[$i]['vacanteNombre']=$results[$i]['vacanteNombre'];
             $vacants[$i]['vacanteDescripcion']=$results[$i]['vacanteDescripcion'];
